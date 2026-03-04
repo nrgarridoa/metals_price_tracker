@@ -14,9 +14,12 @@ from datetime import datetime
 
 from src.config import METAL_TICKERS, CACHE_TTL_LIVE
 from src.fetcher import fetch_historical, fetch_intraday_24h
-from src.database import get_latest_price
+from src.database import get_latest_price, init_db
 from app.components.header import render_header
 from app.components.metal_table import render_metal_table
+
+# --- Inicializar BD (necesario en Streamlit Cloud donde no se usa run.py) ---
+init_db()
 
 # --- Configuracion de pagina ---
 st.set_page_config(

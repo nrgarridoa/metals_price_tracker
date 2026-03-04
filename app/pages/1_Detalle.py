@@ -39,7 +39,9 @@ if not metal_name:
     else:
         metal_name = ticker
 
-# --- Boton volver (arriba) ---
+# --- Espaciado para no quedar tapado por barra de Streamlit Cloud ---
+st.markdown("<div style='height:0.5rem'></div>", unsafe_allow_html=True)
+
 col_back, col_spacer = st.columns([1, 5])
 with col_back:
     st.markdown('<div class="back-btn">', unsafe_allow_html=True)
@@ -211,9 +213,7 @@ with col4:
 # --- Tabs ---
 st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
 
-tab_resumen, tab_historico, tab_futuros = st.tabs(
-    ["Resumen", "Datos historicos", "Futuros"]
-)
+tab_resumen, tab_historico = st.tabs(["Resumen", "Datos historicos"])
 
 with tab_resumen:
     st.dataframe(
@@ -240,6 +240,3 @@ with tab_historico:
         file_name=f"{ticker.replace('=', '_')}_historico.csv",
         mime="text/csv",
     )
-
-with tab_futuros:
-    st.info("Proximamente: cadena de futuros de contratos asociados (GCZ25, GCM26, etc.)")
