@@ -40,7 +40,7 @@ if not metal_name:
         metal_name = ticker
 
 # --- Espaciado para no quedar tapado por barra de Streamlit Cloud ---
-st.markdown("<div style='height:0.5rem'></div>", unsafe_allow_html=True)
+st.markdown("<div style='height:2.5rem'></div>", unsafe_allow_html=True)
 
 col_back, col_spacer = st.columns([1, 5])
 with col_back:

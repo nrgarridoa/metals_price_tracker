@@ -87,8 +87,7 @@ def load_all_metals():
                 "PrevClose": prev_close,
             })
 
-        except Exception as e:
-            st.warning(f"Error con {nombre}: {e}")
+        except Exception:
             continue
 
     return data_list
@@ -109,7 +108,7 @@ st.markdown(
         <p class="footer-meta">
             Actualizado: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}
             &middot; Refresh cada {CACHE_TTL_LIVE}s
-            &middot; {len(METAL_TICKERS)} metales
+            &middot; {len(metales_data)} metales activos
         </p>
         <p class="footer-author">
             Desarrollado por <strong>Nilson R. Garrido Asenjo</strong>
