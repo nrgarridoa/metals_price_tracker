@@ -1,0 +1,524 @@
+/* ============================================
+   Metals Dashboard - Professional Dark Theme
+   Refactored for clean UX/UI
+   ============================================ */
+
+/* --- Hide Sidebar & Navigation --- */
+[data-testid="stSidebar"],
+[data-testid="stSidebarNav"],
+[data-testid="stSidebarCollapsedControl"],
+section[data-testid="stSidebar"] {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
+}
+
+[data-testid="stAppViewBlockContainer"] {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Global Layout --- */
+.block-container {
+    padding-top: 0 !important;
+    padding-bottom: 2rem !important;
+    max-width: 1200px !important;
+}
+
+/* Remove forced center alignment on all paragraphs - was breaking detail page */
+/* Only center within specific scoped classes */
+
+/* --- Header --- */
+.header-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: linear-gradient(180deg, #111820 0%, #0E1117 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid rgba(0, 255, 127, 0.12);
+    margin-bottom: 1.5rem;
+}
+
+.header-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.header-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: #E6EDF3;
+    letter-spacing: -0.3px;
+    white-space: nowrap;
+}
+
+.header-subtitle {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    color: #7D8590;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.header-right {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.header-author-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.header-name {
+    margin: 0;
+    font-weight: 600;
+    color: #8B949E;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.header-role {
+    margin: 0;
+    font-size: 10px;
+    color: #484F58;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.header-link {
+    color: #58A6FF !important;
+    text-decoration: none !important;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.header-link:hover {
+    color: #79C0FF !important;
+    text-decoration: underline !important;
+}
+
+/* --- Scheduler Badge --- */
+.scheduler-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.scheduler-active {
+    background-color: rgba(0, 255, 127, 0.1);
+    color: #00FF7F;
+    border: 1px solid rgba(0, 255, 127, 0.2);
+}
+
+.scheduler-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00FF7F;
+    display: inline-block;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* --- Section Title --- */
+.section-title {
+    text-align: left;
+    color: #E6EDF3 !important;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* --- Table Header Row --- */
+.table-header {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem 0.6rem 0.5rem;
+    border-bottom: 1px solid rgba(139, 148, 158, 0.2);
+    margin-bottom: 0.3rem;
+}
+
+.table-header span {
+    color: #7D8590;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Metal Table Row Styling --- */
+.metal-row {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid rgba(139, 148, 158, 0.06);
+}
+
+.metal-row:hover {
+    background-color: rgba(88, 166, 255, 0.04);
+}
+
+/* --- Metal Name + Ticker --- */
+.metal-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #E6EDF3;
+    line-height: 1.3;
+}
+
+.ticker {
+    display: inline-block;
+    color: #7D8590;
+    font-size: 11px;
+    background-color: rgba(139, 148, 158, 0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
+    margin-top: 2px;
+    border: none;
+}
+
+/* --- Price --- */
+.price {
+    color: #E6EDF3 !important;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
+    white-space: nowrap;
+}
+
+/* --- Variation Colors --- */
+.var-positive {
+    color: #3FB950 !important;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.var-negative {
+    color: #F85149 !important;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.var-neutral {
+    color: #7D8590 !important;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+/* --- Remove default forced centering on ALL paragraphs --- */
+/* Scope centering only to table context */
+.table-cell [data-testid="stMarkdownContainer"] > p {
+    margin: 0 !important;
+}
+
+/* --- Buttons --- */
+.stButton button {
+    background-color: transparent !important;
+    border: 1px solid rgba(88, 166, 255, 0.3) !important;
+    color: #58A6FF !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    transition: all 0.15s ease !important;
+    font-size: 12px !important;
+    padding: 0.3rem 0.8rem !important;
+}
+
+.stButton button:hover {
+    background-color: rgba(88, 166, 255, 0.1) !important;
+    border-color: #58A6FF !important;
+    color: #79C0FF !important;
+}
+
+/* --- Pills (Period selector + Chart type) --- */
+[data-testid="stPills"] {
+    margin-bottom: 0.3rem;
+}
+
+[data-testid="stPills"] button {
+    background-color: rgba(139, 148, 158, 0.08) !important;
+    border: 1px solid rgba(139, 148, 158, 0.15) !important;
+    color: #8B949E !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    border-radius: 6px !important;
+    padding: 0.35rem 0.9rem !important;
+    transition: all 0.15s ease !important;
+    white-space: nowrap !important;
+}
+
+[data-testid="stPills"] button:hover {
+    background-color: rgba(88, 166, 255, 0.12) !important;
+    border-color: rgba(88, 166, 255, 0.4) !important;
+    color: #E6EDF3 !important;
+}
+
+/* Active/selected pill */
+[data-testid="stPills"] button[aria-checked="true"],
+[data-testid="stPills"] button[data-active="true"] {
+    background-color: #58A6FF !important;
+    border-color: #58A6FF !important;
+    color: #0E1117 !important;
+    font-weight: 700 !important;
+}
+
+/* Ensure pills row doesn't wrap */
+[data-testid="stPills"] > div {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 4px !important;
+}
+
+/* --- Detail Page Price Header --- */
+.detail-price-section {
+    padding: 1.5rem 0 1rem 0;
+}
+
+.detail-metal-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #E6EDF3;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-metal-title .ticker-badge {
+    font-size: 0.7rem;
+    color: #7D8590;
+    font-weight: 400;
+    background: rgba(139, 148, 158, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Cascadia Code', monospace;
+}
+
+.detail-price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #E6EDF3;
+    margin: 0.3rem 0 0.2rem 0;
+    font-family: 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
+    letter-spacing: -0.5px;
+}
+
+.detail-price-currency {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #7D8590;
+    margin-left: 4px;
+}
+
+.detail-variation {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.detail-var-positive {
+    color: #3FB950;
+}
+
+.detail-var-negative {
+    color: #F85149;
+}
+
+.detail-meta {
+    font-size: 12px;
+    color: #7D8590;
+    margin-top: 0.3rem;
+}
+
+/* --- Radio buttons (generic) --- */
+.stRadio > div {
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+}
+
+/* --- Market Info Cards --- */
+.market-info-card {
+    background: rgba(139, 148, 158, 0.05);
+    border: 1px solid rgba(139, 148, 158, 0.1);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.market-info-label {
+    font-size: 11px;
+    color: #7D8590;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.market-info-value {
+    font-size: 15px;
+    color: #E6EDF3;
+    font-weight: 600;
+    font-family: 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
+}
+
+/* --- Metrics (Streamlit default) --- */
+[data-testid="stMetricValue"] {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 12px !important;
+    color: #7D8590 !important;
+}
+
+/* --- Tabs --- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0;
+    border-bottom: 1px solid rgba(139, 148, 158, 0.15);
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: #7D8590 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 0.6rem 1.2rem !important;
+    border-bottom: 2px solid transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: #E6EDF3 !important;
+    border-bottom-color: #58A6FF !important;
+    font-weight: 600 !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: #E6EDF3 !important;
+}
+
+/* --- Dataframe --- */
+[data-testid="stDataFrame"] {
+    border: 1px solid rgba(139, 148, 158, 0.1) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+/* --- Links --- */
+a {
+    color: #58A6FF !important;
+}
+
+a:hover {
+    color: #79C0FF !important;
+}
+
+/* --- Divider --- */
+hr {
+    border-color: rgba(139, 148, 158, 0.1) !important;
+    margin: 1rem 0 !important;
+}
+
+/* --- Back Button Special --- */
+.back-btn button {
+    background-color: transparent !important;
+    border: 1px solid rgba(139, 148, 158, 0.2) !important;
+    color: #7D8590 !important;
+    font-size: 13px !important;
+}
+
+.back-btn button:hover {
+    border-color: rgba(139, 148, 158, 0.4) !important;
+    color: #E6EDF3 !important;
+    background-color: rgba(139, 148, 158, 0.05) !important;
+}
+
+/* --- Download Button --- */
+.stDownloadButton button {
+    background-color: rgba(88, 166, 255, 0.1) !important;
+    border: 1px solid rgba(88, 166, 255, 0.3) !important;
+    color: #58A6FF !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+}
+
+.stDownloadButton button:hover {
+    background-color: rgba(88, 166, 255, 0.2) !important;
+    border-color: #58A6FF !important;
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 1.5rem 0 0.5rem 0;
+    border-top: 1px solid rgba(139, 148, 158, 0.1);
+    margin-top: 2rem;
+}
+
+.footer-meta {
+    font-size: 11px;
+    color: #484F58;
+    margin: 0;
+}
+
+.footer-author {
+    font-size: 11px;
+    color: #484F58;
+    margin-top: 4px;
+}
+
+.footer-author a {
+    color: #58A6FF !important;
+    text-decoration: none !important;
+}
+
+.footer-author a:hover {
+    text-decoration: underline !important;
+}
+
+/* --- Caption --- */
+[data-testid="stCaption"] {
+    color: #484F58 !important;
+    font-size: 11px !important;
+}
+
+/* --- Date Input --- */
+[data-testid="stDateInput"] label {
+    font-size: 13px !important;
+    color: #7D8590 !important;
+}

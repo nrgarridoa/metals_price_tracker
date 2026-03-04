@@ -1,0 +1,10 @@
+streamlit>=1.50.0
+yfinance>=0.2.40
+pandas>=2.0
+numpy>=1.24
+plotly>=5.18
+apscheduler>=3.10
+python-dotenv>=1.0
+requests>=2.31
+beautifulsoup4>=4.12
+pytest>=7.4
