@@ -1,63 +1,73 @@
-# Metals Price Tracker - Data Pipeline
+# Metals Price Tracker
 
-Pipeline automatizado para extraer, almacenar y visualizar precios de metales en tiempo real.
+Dashboard en tiempo real que rastrea el precio de **14 metales** (preciosos, industriales y estratégicos) con datos de Yahoo Finance.
 
-## Tecnologias
+### [▶ Ver la app en vivo](https://metalspricetracker.streamlit.app/)
 
-- **Python 3.12** - Backend
-- **Streamlit** - Dashboard interactivo
-- **Plotly** - Graficos avanzados (velas, sparklines)
-- **yfinance** - Fuente de datos (Yahoo Finance)
-- **APScheduler** - Scraping automatico en background
-- **SQLite** - Almacenamiento historico local
-- **Docker** - Deployment containerizado
+---
 
-## Arquitectura
+## Capturas
 
-```
-[APScheduler]  -->  [Yahoo Finance API]  -->  [SQLite DB]
-     (cada 15 min)                              |
-                                                v
-                                    [Streamlit Dashboard]
-                                     |               |
-                                  [Home.py]    [1_Detalle.py]
-                                  (tabla +      (graficos +
-                                  sparklines)    metricas)
-```
+| Dashboard principal | Vista detalle |
+|:---:|:---:|
+| ![Home](docs/screenshots/home.png) | ![Detalle](docs/screenshots/detail.png) |
 
-## Metales Soportados (14)
+## Qué puedes hacer
 
-| Tipo | Metal | Ticker |
-|------|-------|--------|
-| Precioso | Oro, Plata, Platino, Paladio | GC=F, SI=F, PL=F, PA=F |
-| Industrial | Cobre, Aluminio, Plomo, Niquel, Zinc, Estano, Hierro | HG=F, JJU, LP=F, JJN, JJZ, TN=F, TIO=F |
-| Estrategico | Litio, Uranio, Tierras Raras | LIT, URA, REMX |
+- **Consultar precios actuales** de oro, plata, platino, cobre, litio, uranio y 8 metales más
+- **Ver sparklines** de tendencia de cada metal en los últimos 30 días
+- **Explorar gráficos interactivos** con velas japonesas (candlestick) para cada metal
+- **Cambiar el período** de análisis: 1 día, 5 días, 1 mes, 6 meses, 1 año o 5 años
+- **Comparar métricas**: precio actual, máximo, mínimo, variación porcentual y volumen
 
-## Inicio Rapido
+## Metales disponibles
+
+| Preciosos | Industriales | Estratégicos |
+|-----------|-------------|-------------|
+| Oro | Cobre | Litio (ETF) |
+| Plata | Aluminio | Uranio |
+| Platino | Plomo | Tierras Raras |
+| Paladio | Níquel | |
+| | Zinc | |
+| | Estaño | |
+| | Hierro | |
+
+## Tecnologías
+
+- **Streamlit** — Dashboard interactivo
+- **Plotly** — Gráficos de velas y sparklines
+- **yfinance** — Datos en tiempo real desde Yahoo Finance
+- **SQLite** — Almacenamiento histórico local
+- **APScheduler** — Actualización automática en segundo plano
+- **Docker** — Deployment containerizado
+
+---
+
+## Instalación local
 
 ```bash
-# 1. Clonar e instalar
-git clone <repo-url>
-cd 3_Scrapping-metales
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/3_Metals_Price_Tracker.git
+cd 3_Metals_Price_Tracker
+
+# Crear entorno virtual e instalar dependencias
 python -m venv _metales
 source _metales/bin/activate  # Windows: _metales\Scripts\activate
 pip install -r requirements.txt
 
-# 2. Ejecutar (scheduler + dashboard)
+# Ejecutar
 python run.py
-
-# 3. Abrir en navegador
-# http://localhost:8501
+# Abrir http://localhost:8501
 ```
 
-## Con Docker
+### Con Docker
 
 ```bash
 docker compose up --build
 # Abrir http://localhost:8501
 ```
 
-## Estructura del Proyecto
+## Estructura del proyecto
 
 ```
 ├── run.py                    # Entry point (scheduler + streamlit)
@@ -67,24 +77,18 @@ docker compose up --build
 │   ├── components/           # Componentes reutilizables
 │   └── static/styles.css     # Estilos dark theme
 ├── src/
-│   ├── config.py             # Configuracion centralizada
-│   ├── fetcher.py            # Yahoo Finance (sin Streamlit)
-│   ├── scheduler.py          # APScheduler automatico
+│   ├── config.py             # Configuración centralizada
+│   ├── fetcher.py            # Cliente Yahoo Finance
+│   ├── scheduler.py          # APScheduler automático
 │   ├── database.py           # SQLite con esquema OHLCV
-│   └── utils.py              # Utilidades puras
-├── data/metals.db            # Base de datos historica
+│   └── utils.py              # Utilidades
+├── data/metals.db            # Base de datos histórica
 ├── tests/                    # Tests unitarios
-├── Dockerfile                # Deploy containerizado
+├── Dockerfile
 └── docker-compose.yml
 ```
 
-## Tests
-
-```bash
-pytest tests/ -v
-```
-
-## Configuracion (.env)
+## Configuración (.env)
 
 ```env
 YF_CACHE_TTL=120              # Cache del dashboard (seg)
@@ -93,3 +97,17 @@ SCHEDULER_INTERVAL_OFF=60     # Intervalo fuera de mercado (min)
 DB_PATH=data/metals.db        # Ruta de la BD
 LOG_LEVEL=INFO                # Nivel de logging
 ```
+
+## Tests
+
+```bash
+pytest tests/ -v
+```
+
+## Contribuir
+
+1. Fork del repositorio
+2. Crear rama: `git checkout -b feature/nueva-funcionalidad`
+3. Commit: `git commit -m "Agregar nueva funcionalidad"`
+4. Push: `git push origin feature/nueva-funcionalidad`
+5. Abrir Pull Request
